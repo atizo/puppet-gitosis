@@ -1,30 +1,22 @@
-#
-# gitosis module
-#
-# Copyright 2008, Puzzle ITC
-# Marcel Härry haerry+puppet(at)puzzle.ch
-# Simon Josi josi+puppet(at)puzzle.ch
-#
-# This program is free software; you can redistribute 
-# it and/or modify it under the terms of the GNU 
-# General Public License version 3 as published by 
-# the Free Software Foundation.
-#
+# manifests/init.pp - manage gitosis stuff
+# Copyright (C) 2007 admin@immerda.ch
+# GPLv3
 
-# modules_dir { \"gitosis\": }
+import 'defines.pp'
 
 class gitosis {
-    include gitosis::base
+    case $operatingsystem {
+        default: { include gitosis::base }
+    }
 }
 
 class gitosis::base {
+    include git
+    include rsync::client
+    include python::setuptools
     package{'gitosis':
-        ensure => present,
-    }
-    service{gitosis:
-        ensure => running,
-        enable => true,
-        hasstatus => true,
-        require => Package[gitosis],
+        ensure => installed,
+        require => [ Package['git'], Package['rsync'], Package['python-setuptools'] ],
     }
 }
+
