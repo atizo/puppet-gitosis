@@ -7,4 +7,3 @@ class gitosis::base {
         require => [ Package['git'], Package['rsync'], Package['python-setuptools'] ],
     }
 }
-
