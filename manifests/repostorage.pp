@@ -44,7 +44,7 @@ define gitosis::repostorage(
   user::groups::manage_user{"manage_${name}_in_group_gitaccess":
     ensure => $ensure,
     user => $name,
-    group => $gitaccess,
+    group => 'gitaccess',
     require => [ Group['gitaccess'], User::Managed[$name] ],
   }
   if $ensure == 'present' {
