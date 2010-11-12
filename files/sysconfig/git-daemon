@@ -4,7 +4,7 @@
 #LOCKFILE=/var/lock/subsys/git-daemon
 
 # which directory to server
-#GITDIR=/srv/git
+GITDIR=/srv/git-daemon
 
 # do we serve vhosts?
 # setting this to yes assumes that you 
@@ -14,6 +14,7 @@
 # - /srv/git/git.example.com
 # - /srv/git/git.example.org
 #GITVHOST=no
+GITVHOST=yes
 
 # the user git-daemon should run with
 GITUSER=gitosisd
