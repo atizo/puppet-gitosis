@@ -32,7 +32,7 @@ define gitosis::emailnotification(
   } else {
       $real_repository = $repository
   }
-  $repodir = $basedir ? {
+  $repodir = $repostore_basedir ? {
     'absent' => "/srv/git/$repostore/repositories/$real_repository.git",
     default => "$repostore_basedir/repositories/$real_repository.git",
   }
