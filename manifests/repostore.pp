@@ -60,6 +60,7 @@ define gitosis::repostore(
       unless => "test -d $real_basedir/repositories",
       require => [
         Package['gitosis'],
+        User::Managed[$name],
         File["$real_basedir/initial_admin_pubkey.puppet"],
       ],
     }
