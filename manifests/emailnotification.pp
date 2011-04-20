@@ -46,7 +46,7 @@ define gitosis::emailnotification(
   }
   line{"emailnotification_hook_for_$name":
     ensure => $ensure,
-    line => '. /usr/share/doc/git-1.5.5.6/hooks/post-receive-email',
+    line => '. /usr/share/git-core/contrib/hooks/post-receive-email',
     file => "$repodir/hooks/post-receive",
     require => File["$repodir/hooks/post-receive"],
   }
